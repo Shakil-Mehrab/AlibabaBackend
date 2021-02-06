@@ -1,0 +1,17 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'filepond/dist/filepond.min.css';
+@import 'select2/dist/css/select2.css';
+@import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+@layer utilities {
+    .toggle__dot {
+        top: -.25rem;
+        left: -.25rem;
+        transition: all 0.3s ease-in-out;
+    }
+    input:checked~.toggle__dot {
+        transform: translateX(100%);
+        background-color: #48bb78;
+    }
+}
