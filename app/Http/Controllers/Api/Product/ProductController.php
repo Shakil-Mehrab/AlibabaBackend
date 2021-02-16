@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Product;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,19 +12,20 @@ use App\Http\Resources\Product\ProductIndexResource;
 class ProductController extends Controller
 {
 
-    public function index(Request $request){
-        dd(request('category'));
-        $products=Product::latest()
+    public function index(Request $request)
+    {
+        $products = Product::latest()
             ->withScopes(
                 $this->scopes()
             )
-            ->shakil(request('per-page'));
+            ->pagination(request('per-page'));
 
         return ProductIndexResource::collection(
             $products
         );
     }
-    public function show(Product $product){
+    public function show(Product $product)
+    {
         // return $product;
         return new ProductResource(
             $product

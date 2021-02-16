@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Size;
 use Illuminate\Database\Seeder;
 
+use function GuzzleHttp\Promise\each;
+
 class SizeSeeder extends Seeder
 {
     /**
@@ -14,28 +16,18 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        $size=[
-
-                "size" => "s"
-            // [
-            //     "size" => "m"
-            // ],
-            // [
-            //     "size" => "L"
-            // ],
-            // [
-            //     "size" => "xl"
-            // ],
-            // [
-            //     "size" => "2xl"
-            // ],
-            // [
-            //     "size" => "3xl"
-            // ],
-            // [
-            //     "size" => "4xl"
-            // ],
+        $sizes = [
+            's',
+            'm',
+            'l',
+            'xl',
+            '2xl',
+            '4xl'
         ];
-        Size::create($size);
+        foreach ($sizes as $index => $size) {
+            Size::create([
+                'size' => $size
+            ]);
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Category;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -17,15 +17,14 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories=Category::with('children','children.children')
-                    ->withScopes(
-                        $this->scopes()
-                    )
-                    ->parents()
-                    ->get();
+        $categories = Category::with('children', 'children.children')
+            ->withScopes(
+                $this->scopes()
+            )
+            ->parents()
+            ->get();
         return CategoryResource::collection($categories);
     }
-
 
     protected function scopes()
     {

@@ -98,16 +98,6 @@ class User extends Authenticatable
             ->latest();
     }
 
-    /**
-     * topics
-     *
-     * @return void
-     */
-    public function topics()
-    {
-        return $this->hasMany(Topic::class)
-            ->latest();
-    }
 
     /**
      * tags

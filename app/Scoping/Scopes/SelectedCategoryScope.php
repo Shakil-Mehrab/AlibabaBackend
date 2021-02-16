@@ -9,8 +9,6 @@ class  SelectedCategoryScope implements Scope
 {
 
     public function apply(Builder $builder,$value){
-        // return $builder->whereHas('categories',function($builder) use ($value){
-            $builder->where('slug',$value);
-        // });
+            $builder->whereIn('slug',explode(',',$value));
     }
 }

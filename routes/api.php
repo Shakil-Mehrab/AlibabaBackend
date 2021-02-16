@@ -4,9 +4,9 @@ use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\Api\Product\ProductController;
+use App\Http\Controllers\Api\Category\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +27,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/test', function (Request $request) {
     return Region::with('children')->get()->toTree();
 });
-Route::get('/categories',[CategoryController::class,'index']);
-Route::get('/users',[UserController::class,'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/users', [UserController::class, 'index']);
 
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'index']);

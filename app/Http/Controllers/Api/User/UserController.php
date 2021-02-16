@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users=User::get();
+        $users = User::get();
         return UserResource::collection($users);
     }
 }
